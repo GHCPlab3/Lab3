@@ -12,6 +12,9 @@
  * @throws {Error} If operation is invalid or division by zero
  */
 function calculate(a, op, b) {
+  if (typeof a !== 'number' || typeof b !== 'number' || isNaN(a) || isNaN(b)) {
+    throw new Error('Invalid input: both operands must be numbers');
+  }
   switch (op) {
     case '+':
       // Addition operation

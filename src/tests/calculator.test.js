@@ -1,36 +1,37 @@
 const { calculate } = require('../calculator');
+const { expect } = require('chai');
 
 describe('Calculator basic operations', () => {
-  test('adds two numbers', () => {
-    expect(calculate(10, '+', 5)).toBe(15);
-    expect(calculate(-2, '+', 2)).toBe(0);
+  it('adds two numbers', () => {
+    expect(calculate(10, '+', 5)).to.equal(15);
+    expect(calculate(-2, '+', 2)).to.equal(0);
   });
 
-  test('subtracts two numbers', () => {
-    expect(calculate(10, '-', 5)).toBe(5);
-    expect(calculate(0, '-', 5)).toBe(-5);
+  it('subtracts two numbers', () => {
+    expect(calculate(10, '-', 5)).to.equal(5);
+    expect(calculate(0, '-', 5)).to.equal(-5);
   });
 
-  test('multiplies two numbers', () => {
-    expect(calculate(10, '*', 5)).toBe(50);
-    expect(calculate(-2, '*', 3)).toBe(-6);
+  it('multiplies two numbers', () => {
+    expect(calculate(10, '*', 5)).to.equal(50);
+    expect(calculate(-2, '*', 3)).to.equal(-6);
   });
 
-  test('divides two numbers', () => {
-    expect(calculate(10, '/', 5)).toBe(2);
-    expect(calculate(9, '/', 3)).toBe(3);
+  it('divides two numbers', () => {
+    expect(calculate(10, '/', 5)).to.equal(2);
+    expect(calculate(9, '/', 3)).to.equal(3);
   });
 
-  test('division by zero throws error', () => {
-    expect(() => calculate(10, '/', 0)).toThrow('Division by zero');
+  it('division by zero throws error', () => {
+    expect(() => calculate(10, '/', 0)).to.throw('Division by zero');
   });
 
-  test('invalid operator throws error', () => {
-    expect(() => calculate(10, '^', 2)).toThrow('Unsupported operation');
+  it('invalid operator throws error', () => {
+    expect(() => calculate(10, '^', 2)).to.throw('Unsupported operation');
   });
 
-  test('non-numeric input throws error', () => {
-    expect(() => calculate('a', '+', 2)).toThrow();
-    expect(() => calculate(2, '+', 'b')).toThrow();
+  it('non-numeric input throws error', () => {
+    expect(() => calculate('a', '+', 2)).to.throw();
+    expect(() => calculate(2, '+', 'b')).to.throw();
   });
 });
